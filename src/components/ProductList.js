@@ -1,11 +1,11 @@
-import React from 'react';
-import { Card, CardBody, CardTitle, CardText, Button, Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';  // Import Link from react-router-dom
+import React, { useState } from 'react';
+import { Card, CardBody, CardTitle, CardText, Button, Row, Col, Alert } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import Earing from '../images/earing.jpeg';
 import Perfume from '../images/perfume.jpg';
 import Ring from "../images/ring.jpg";
 import RK from "../images/rk.jpg";
-import Bhagvadgita from "../images/bhagvatgita.jpg"
+import Bhagvadgita from "../images/bhagvatgita.jpg";
 import '../styles/ProductList.css';
 
 const products = [
@@ -47,15 +47,18 @@ const products = [
 ];
 
 const ProductList = ({ addToCart }) => {
+    const [notification, setNotification] = useState('');
+
     const handleAddToCart = (product) => {
-        const quantity = parseInt(prompt('Enter quantity:', '1'), 10);
-        if (quantity > 0) {
-            addToCart(product, quantity);
-        }
+        const quantity = 1; // Default quantity
+        addToCart(product, quantity);
+        setNotification(`${product.name} has been added to the cart!`);
+        setTimeout(() => setNotification(''), 3000); // Clear the notification after 3 seconds
     };
 
     return (
         <div>
+            {notification && <Alert color="success" className="text-center">{notification}</Alert>}
             <Row>
                 {products.map(product => (
                     <Col sm="4" key={product.id}>
@@ -73,7 +76,7 @@ const ProductList = ({ addToCart }) => {
             </Row>
             <div className="text-center mt-4">
                 <Link to="/">
-                    <Button color="secondary" size="lg">
+                    <Button color="secondary" size="lg" style={{ backgroundColor: 'blue', borderColor: 'blue' }}>
                         Go to Home
                     </Button>
                 </Link>

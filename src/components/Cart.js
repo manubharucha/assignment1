@@ -1,25 +1,22 @@
-import React from 'react';
-import { Table, Button } from 'reactstrap';
+import React, { useState } from 'react';
+import { Table, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const Cart = ({ cartItems, updateCartItem, removeCartItem }) => {
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => setModal(!modal);
 
     const handleQuantityChange = (productId, event) => {
-        // Parse the quantity from the event
         const quantity = parseInt(event.target.value, 10);
-
-        // Ensure the quantity is a positive number before updating the cart item
         if (quantity > 0) {
             updateCartItem(productId, quantity);
         } else {
-            // If the quantity is not positive, you might want to provide feedback
-            // or handle the situation differently, e.g., reset to the previous value
             console.warn(`Invalid quantity: ${quantity} for product ID: ${productId}`);
         }
     };
 
     const handleFinalizePurchase = () => {
-        // Show a pop-up message when the "Finalize Purchase" button is clicked
-        window.alert('Thank you for shopping!');
+        toggleModal();
     };
 
     return (
@@ -61,6 +58,15 @@ const Cart = ({ cartItems, updateCartItem, removeCartItem }) => {
                 </tbody>
             </Table>
             <Button color="primary" onClick={handleFinalizePurchase}>Finalize Purchase</Button>
+            <Modal isOpen={modal} toggle={toggleModal}>
+                <ModalHeader toggle={toggleModal}>Purchase Confirmation</ModalHeader>
+                <ModalBody>
+                    Thank you for shopping with us! Your purchase has been finalized.
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" onClick={toggleModal}>Close</Button>
+                </ModalFooter>
+            </Modal>
         </div>
     );
 };

@@ -5,7 +5,6 @@ import Home from './components/Home';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import Account from './components/Account';
-// import logo from './logo.png';
 
 const App = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -38,7 +37,6 @@ const App = () => {
 
     return (
         <Router>
-            {/* <Header logo={logo} /> */}
             <Header/>
             <Routes>
                 <Route path="/" element={<Home />} />
