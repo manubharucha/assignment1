@@ -53,7 +53,7 @@ const ProductList = ({ addToCart }) => {
         const quantity = 1; // Default quantity
         addToCart(product, quantity);
         setNotification(`${product.name} has been added to the cart!`);
-        setTimeout(() => setNotification(''), 3000); // Clear the notification after 3 seconds
+        setTimeout(() => setNotification(''), 3000); 
     };
 
     return (
