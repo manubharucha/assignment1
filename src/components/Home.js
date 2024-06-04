@@ -1,7 +1,7 @@
     import React from 'react';
     import { Button } from 'reactstrap';
     import { Link } from 'react-router-dom';
-    import homeImage from '../images/shopping.webp'; // Import your image here
+    import homeImage from '../images/shopping.webp'; 
 
     const Home = () => {
         return (

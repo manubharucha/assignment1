@@ -5,10 +5,12 @@ import Home from './components/Home';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import Account from './components/Account';
+import UserInfo from './components/userInfo';
 
 const App = () => {
     const [cartItems, setCartItems] = useState([]);
-    const [account, setAccount] = useState({ name: '', address: '' });
+    const [account, setAccount] = useState({ name: '', address: '', email: '' });
+    const [isEditing, setIsEditing] = useState(true);
 
     const addToCart = (product, quantity) => {
         const existingItem = cartItems.find(item => item.product.id === product.id);
@@ -31,18 +33,27 @@ const App = () => {
         setCartItems(cartItems.filter(item => item.product.id !== productId));
     };
 
-    const updateAccount = (name, address) => {
-        setAccount({ name, address });
+    const updateAccount = (newAccount) => {
+        setAccount(newAccount);
+        setIsEditing(false);
+    };
+
+    const editAccount = () => {
+        setIsEditing(true);
     };
 
     return (
         <Router>
-            <Header/>
+            <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/products" element={<ProductList addToCart={addToCart} />} />
                 <Route path="/cart" element={<Cart cartItems={cartItems} updateCartItem={updateCartItem} removeCartItem={removeCartItem} />} />
-                <Route path="/account" element={<Account account={account} updateAccount={updateAccount} />} />
+                <Route path="/account" element={
+                    isEditing 
+                        ? <Account account={account} updateAccount={updateAccount} /> 
+                        : <UserInfo account={account} editAccount={editAccount} />
+                } />
             </Routes>
         </Router>
     );

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Card, CardBody, CardTitle, CardText, Button, Row, Col, Alert } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Earing from '../images/earing.jpeg';
 import Perfume from '../images/perfume.jpg';
@@ -58,27 +57,25 @@ const ProductList = ({ addToCart }) => {
 
     return (
         <div>
-            {notification && <Alert color="success" className="text-center">{notification}</Alert>}
-            <Row>
+            {notification && <div className="alert alert-success text-center" role="alert">{notification}</div>}
+            <div className="row">
                 {products.map(product => (
-                    <Col sm="4" key={product.id}>
-                        <Card>
+                    <div className="col-sm-4" key={product.id}>
+                        <div className="card">
                             <img src={product.image} alt={product.name} className="card-img-top" />
-                            <CardBody>
-                                <CardTitle tag="h5">{product.name}</CardTitle>
-                                <CardText>{product.description}</CardText>
-                                <CardText>${product.price}</CardText>
-                                <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-                            </CardBody>
-                        </Card>
-                    </Col>
+                            <div className="card-body">
+                                <h5 className="card-title">{product.name}</h5>
+                                <p className="card-text">{product.description}</p>
+                                <p className="card-text">${product.price}</p>
+                                <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
                 ))}
-            </Row>
+            </div>
             <div className="text-center mt-4">
                 <Link to="/">
-                    <Button color="secondary" size="lg" style={{ backgroundColor: 'blue', borderColor: 'blue' }}>
-                        Go to Home
-                    </Button>
+                    <button className="btn btn-lg btn-secondary" style={{ backgroundColor: 'blue', borderColor: 'blue' }}>Go to Home</button>
                 </Link>
             </div>
         </div>
