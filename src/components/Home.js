@@ -1,18 +1,22 @@
-import React from 'react';
-import { Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+    import React from 'react';
+    import { Button } from 'reactstrap';
+    import { Link } from 'react-router-dom';
+    import homeImage from '../images/shopping.webp'; // Import your image here
 
-const Home = () => {
-    return (
-        <div className="text-center" style={{ padding: '50px' }}>
-            <h1>Welcome to the Shopping Website</h1>
-            <Link to="/products">
-                <Button color="primary" size="lg" style={{ marginTop: '20px' }}>
-                    Go to Product List
-                </Button>
-            </Link>
-        </div>
-    );
-};
+    const Home = () => {
+        return (
+            <div className="text-center" style={{ padding: '50px' }}>
+                <h1>Welcome to the Shopping Website</h1>
+                <img src={homeImage} alt="Home" style={{ maxWidth: '20%', height: 'auto', margin: '20px 0' }} />
+                <div style={{ marginTop: '20px' }}>
+                    <Link to="/products">
+                        <Button color="primary" size="lg">
+                            Go to Product List
+                        </Button>
+                    </Link>
+                </div>
+            </div>
+        );
+    };
 
-export default Home;
+    export default Home;

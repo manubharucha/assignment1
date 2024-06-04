@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, CardText, Button, Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';  // Import Link from react-router-dom
 import Earing from '../images/earing.jpeg';
 import Perfume from '../images/perfume.jpg';
 import Ring from "../images/ring.jpg";
@@ -54,22 +55,30 @@ const ProductList = ({ addToCart }) => {
     };
 
     return (
-        <Row>
-            {products.map(product => (
-                <Col sm="4" key={product.id}>
-                    <Card>
-                        <img src={product.image} alt={product.name} className="card-img-top" />
-                        <CardBody>
-                            <CardTitle tag="h5">{product.name}</CardTitle>
-                            <CardText>{product.description}</CardText>
-                            <CardText>${product.price}</CardText>
-                            <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-                        </CardBody>
-                    </Card>
-                </Col>
-            ))}
-        </Row>
-        
+        <div>
+            <Row>
+                {products.map(product => (
+                    <Col sm="4" key={product.id}>
+                        <Card>
+                            <img src={product.image} alt={product.name} className="card-img-top" />
+                            <CardBody>
+                                <CardTitle tag="h5">{product.name}</CardTitle>
+                                <CardText>{product.description}</CardText>
+                                <CardText>${product.price}</CardText>
+                                <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+            <div className="text-center mt-4">
+                <Link to="/">
+                    <Button color="secondary" size="lg">
+                        Go to Home
+                    </Button>
+                </Link>
+            </div>
+        </div>
     );
 };
 

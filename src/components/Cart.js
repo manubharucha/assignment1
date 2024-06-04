@@ -17,6 +17,11 @@ const Cart = ({ cartItems, updateCartItem, removeCartItem }) => {
         }
     };
 
+    const handleFinalizePurchase = () => {
+        // Show a pop-up message when the "Finalize Purchase" button is clicked
+        window.alert('Thank you for shopping!');
+    };
+
     return (
         <div>
             <h2>Shopping Cart</h2>
@@ -24,6 +29,7 @@ const Cart = ({ cartItems, updateCartItem, removeCartItem }) => {
                 <thead>
                     <tr>
                         <th>Product</th>
+                        <th>Description</th>
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Total</th>
@@ -33,7 +39,8 @@ const Cart = ({ cartItems, updateCartItem, removeCartItem }) => {
                 <tbody>
                 {cartItems.map(item => (
                     <tr key={item.product.id}>
-                        <td>{item.product.name}</td>
+                        <td><img src={item.product.image} alt={item.product.name} style={{ maxWidth: '100px' }} /></td>
+                        <td>{item.product.description}</td>
                         <td>
                             <input 
                                 type="number" 
@@ -53,7 +60,7 @@ const Cart = ({ cartItems, updateCartItem, removeCartItem }) => {
                 ))}
                 </tbody>
             </Table>
-            <Button color="primary">Finalize Purchase</Button>
+            <Button color="primary" onClick={handleFinalizePurchase}>Finalize Purchase</Button>
         </div>
     );
 };
