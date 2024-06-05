@@ -49,7 +49,7 @@ const ProductList = ({ addToCart }) => {
     const [notification, setNotification] = useState('');
 
     const handleAddToCart = (product) => {
-        const quantity = 1; // Default quantity
+        const quantity = 1; 
         addToCart(product, quantity);
         setNotification(`${product.name} has been added to the cart!`);
         setTimeout(() => setNotification(''), 3000); 
