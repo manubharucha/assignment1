@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Earing from '../images/earing.jpeg';
+import Earing from '../images/earing.webp';
 import Perfume from '../images/perfume.jpg';
 import Ring from "../images/ring.jpg";
 import RK from "../images/rk.jpg";

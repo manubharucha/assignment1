@@ -7,6 +7,7 @@ import Cart from './components/Cart';
 import Account from './components/Account';
 import UserInfo from './components/userInfo';
 
+
 const App = () => {
     const [cartItems, setCartItems] = useState([]);
     const [account, setAccount] = useState({ name: '', address: '', email: '' });
@@ -55,6 +56,7 @@ const App = () => {
                         : <UserInfo account={account} editAccount={editAccount} />
                 } />
             </Routes>
+            
         </Router>
     );
 };
